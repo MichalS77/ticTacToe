@@ -12,6 +12,18 @@ function GameBoard(){
 }
 
 
+const getBoard = () => board;
+
+function changePlayers(){
+    if(activePlayer == player1){
+        activePlayer == player2;
+    } else activePlayer == player1;
+}
+
+function createPlayer(name, token){
+    return {name, token};
+}
+
 
 
 
