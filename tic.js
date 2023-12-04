@@ -9,9 +9,7 @@ function GameBoard(){
             board[i].push(Cell());
         }
     }
-
-    console.log(board);
-}
+    const getBoard = () => board;
 
 function Cell(){
     let value = 0;
@@ -21,14 +19,17 @@ function Cell(){
     const getValue = () => value;
 
     return  {addToken, getValue};
-    
 }
 
-GameBoard();
+const printBoard = () => {
+    const boardWithCellValues = board.map((row) =>
+    row.map((cell) => cell.getValue()))
+    console.log(boardWithCellValues);
+};
+return {getBoard, printBoard};
+}
 
-
-
-const getBoard = () => board;
+GameBoard().printBoard();
 
 function changePlayers(){
     if(activePlayer == player1){
@@ -39,8 +40,6 @@ function changePlayers(){
 function createPlayer(name, token){
     return {name, token};
 }
-
-
 
 
 
