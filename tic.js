@@ -1,6 +1,6 @@
 function GameBoard(){
     const rows = 3;
-    const columns = 7;
+    const columns = 3;
     const board = [];
 
     for (let i = 0; i < rows; i++){
@@ -9,7 +9,23 @@ function GameBoard(){
             board[i].push(Cell());
         }
     }
+
+    console.log(board);
 }
+
+function Cell(){
+    let value = 0;
+
+    const addToken = (player) => value = player;
+
+    const getValue = () => value;
+
+    return  {addToken, getValue};
+    
+}
+
+GameBoard();
+
 
 
 const getBoard = () => board;
@@ -23,6 +39,7 @@ function changePlayers(){
 function createPlayer(name, token){
     return {name, token};
 }
+
 
 
 
