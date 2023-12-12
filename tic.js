@@ -58,7 +58,7 @@ function gameController(){
         }
     }
 
-    const three = (arr) => arr.every(Cell => Cell.getValue() === 'X' || Cell.getValue() == 'O');
+    const three = (arr) => arr.every(Cell => Cell.getValue() === 'X') ||  arr.every(Cell =>Cell.getValue() === 'O');
     
     const getActivePlayer = () => activePlayer;
     
@@ -83,29 +83,24 @@ function gameController(){
         let diag1 = [flatBoard[0], flatBoard[4], flatBoard[8]];
         let diag2 = [flatBoard[2], flatBoard[4], flatBoard[6]];
 
-        if(three(board[0]) || three(board[1]) || three(board[2]) || three(col1) || three(col2) || three(col3) || three(diag1) || three(diag2))
+        if(three(board[0]) || three(board[1]) || three(board[2]) || three(col1) || three(col2) || three(col3) || three(diag1) || three(diag2)){
         return console.log(`${activePlayer.name} won`);
+        
+        }else {
+            activePlayer = changePlayers(activePlayer);
+            printNewRound();
         }
-    
+    }   
     let playRound = (row,column) => {
         console.log(`Dropping ${activePlayer.name}'s token into row ${row} and column ${column}`);
 
         gameBoard.dropToken(row, column, activePlayer);
         
-        checkWinner();
-        
-        activePlayer = changePlayers(activePlayer);
-        
-        printNewRound();
+        checkWinner();   
     }
 
         return {playRound, getActivePlayer, changePlayers, board, checkWinner};
-
 }
-
-
-
-    
 
 let game = gameController();
 
